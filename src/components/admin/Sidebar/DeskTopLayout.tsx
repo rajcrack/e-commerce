@@ -1,12 +1,7 @@
 import Tile from "@/components/Tile"
 import AdminItemList from "./ItemsList";
 import { FcShop } from "react-icons/fc";
-import { Bungee_Spice } from 'next/font/google';
 
-const bungeefont = Bungee_Spice({
-    subsets: ["latin"],
-    weight: "400"
-});
 
 export const AdminDeskTopLayout = () => {
     return (
@@ -15,7 +10,7 @@ export const AdminDeskTopLayout = () => {
                 <div className="">
                     <FcShop className="text-[60px]" />
                 </div>
-                <div className={`text-[25px] text-center font-light ${bungeefont.className}`}>
+                <div className={`text-[25px] text-center font-light`}>
                     Ecommerce <br />Admin
                 </div>
             </div>
