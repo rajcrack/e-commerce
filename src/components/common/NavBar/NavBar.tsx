@@ -11,7 +11,7 @@ interface Props {
 const NavBar = ({ openNav }: Props) => {
     const usePath = usePathname();
     return (
-        <div className='flex items-center justify-between pl-7 pr-7 pt-3 pb-3 h-[90px]'>
+        <div className='flex items-center justify-between pl-7 pr-7 pt-3 pb-3 h-[90px] z-30'>
             {/* Logo */}
             <div>
                 {!usePath.includes('/admin') && <Image src='/logo.png' alt='logo' width={200} height={200} />}

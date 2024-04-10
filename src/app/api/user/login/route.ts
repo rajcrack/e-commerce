@@ -1,5 +1,5 @@
 import { UserLogin } from '@/lib/_secured/User';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
     try {
@@ -14,4 +14,12 @@ export async function POST(request: Request) {
             error: error
         });
     }
+}
+
+export async function GET(request: NextRequest) {
+    let data = new URL(request.url);
+    return NextResponse.json({
+        url: data,
+        data: 'sumbite'
+    });
 }

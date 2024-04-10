@@ -17,5 +17,6 @@ export const AdminDeskTopLayout = () => {
             <div className="pt-4 pb-5 pl-2 pr-2 v">
                 <AdminItemList />
             </div>
-        </div>)
+        </div>
+    )
 }
