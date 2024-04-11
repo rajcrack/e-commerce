@@ -1,6 +1,9 @@
 import prisma from "../prisma";
 
-export const UserRegister = async ({ name, email, phone, password }: { name: string, email: string, phone: string, password: string }) => {
+/**
+register new User
+ */
+export const UserRegister = async ({ name, email, phone, password }: { name?: string, email: string, phone: string, password: string }) => {
     try {
         const user = await prisma.user.create(
             { data: { name, email, phone, password, role: "user" } }
@@ -11,7 +14,9 @@ export const UserRegister = async ({ name, email, phone, password }: { name: str
         throw error;
     }
 }
-
+/**
+ *  =--------------Login User to website
+ */
 export const UserLogin = async ({ data, password }: { data: string, password: string }) => {
     try {
         const user = await prisma.user.findFirst({
@@ -38,3 +43,6 @@ export const UserLogin = async ({ data, password }: { data: string, password: st
         throw error;
     }
 }
+/**
+ * ----------- get login count
+ */

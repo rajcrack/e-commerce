@@ -5,6 +5,8 @@ export default function AdminItemList() {
     <>
       <Tile title="DashBoard" href="/dashboard" />
       <Tile title="Product" href="/product" />
+      <Tile title="Active Users" href="/users/active" />
+      <Tile title="InActive Users" href="/users/inactive" />
     </>
   )
 }

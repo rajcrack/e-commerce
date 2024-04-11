@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",
+    "@vercel/blob": "^0.22.3",
     "next": "14.1.4",
     "nextjs-toploader": "^1.6.11",
     "pg": "^8.11.5",
