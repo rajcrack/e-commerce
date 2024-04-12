@@ -1,4 +1,5 @@
 import { FunctionUserList } from '@/lib/_secured/admin/user';
+import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -18,9 +19,21 @@ export async function GET(request: Request) {
 
 export async function PUT(request: Request) {
     try {
-        const { id, isActive } = await request.json();
+        const url = new URL(request.url);
+        const { searchParams } = url;
+        const call = searchParams.get('update');
+        if (call == "isActive") {
+            const { id, isActive } = await request.json();
+            const user = await prisma.user.update({
+                data: { isActive: isActive },
+                where: {
+                    id: id
+                }
+            });
+            return NextResponse.json({ user, message: 'updated Successfully' });
 
-        return NextResponse.json({ message: 'updated Successfully' });
+        }
+        return NextResponse.json({ message: 'Please Provide the data you want to update.' });
     } catch (error) {
         return NextResponse.error();
     }

@@ -22,7 +22,7 @@ const NavBar = ({ openNav }: Props) => {
                 <div className='pl-[32px] pr-[32px] hidden lg:block'>
                     <Links />
                 </div>
-
+                <div className="block lg:hidden text-[32px]"><BiMenu onClick={openNav} /></div>
             </div>
         </div>
     )

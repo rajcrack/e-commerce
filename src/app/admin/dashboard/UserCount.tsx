@@ -25,7 +25,7 @@ export default function UserCount() {
         getUsers();
     }, []);
     return (
-        <>   <AdminCard heading="Active Users" count={data.activeUser} height={20} bgColor='bg-green-600' fgColor='text-white' />
-            <AdminCard heading="InActive Users" count={data.inActiveUser} height={20} bgColor='bg-red-400' fgColor='text-white' /></>
+        <>   <AdminCard heading="Active Users" count={data.activeUser} height={20} bgColor='bg-green-600' fgColor='text-white' url="/users/active" />
+            <AdminCard heading="InActive Users" count={data.inActiveUser} height={20} bgColor='bg-red-400' fgColor='text-white' url="/users/inactive" /></>
     )
 }

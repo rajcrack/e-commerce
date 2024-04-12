@@ -14,7 +14,7 @@ export default function UserTable({ type }: { type: string }) {
     const [userList, setUserList] = useState<any>([]);
     const [count, setCount] = useState<number>(0);
     const updateCount = () => {
-        setCount(count);
+        setCount(count + 1);
     }
     useEffect(() => {
         async function geUserList() {
@@ -27,10 +27,22 @@ export default function UserTable({ type }: { type: string }) {
             });
             const { usersList } = await response.json();
             setUserList(usersList);
-            console.log(usersList);
         }
         geUserList();
-    }, [userList]);
+    }, [count]);
+
+
+    const updateActive = async (id?: string, nowActive?: boolean) => {
+        const response = await fetch('/api/admin/user?update=isActive', {
+            method: "PUT",
+            body: JSON.stringify({
+                id: id,
+                isActive: !nowActive
+            })
+        });
+        const responseData = await response.json();
+        updateCount();
+    }
     return (
         <>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-[90%] mx-auto bg-white text-black border">
@@ -72,7 +84,7 @@ export default function UserTable({ type }: { type: string }) {
                                 {data.phone}
                             </td>
                             <td className="px-6 py-4">
-                                <span className={(data.isActive ? 'bg-green-600' : 'bg-red-600') + ' pt-[6px] pb-[6px] pl-3 pr-3 text-white rounded-full cursor-pointer'}>
+                                <span className={(data.isActive ? 'bg-green-600' : 'bg-red-600') + ' pt-[6px] pb-[6px] pl-3 pr-3 text-white rounded-full cursor-pointer'} onClick={() => updateActive(data.id, data.isActive)}>
                                     {data.isActive ? "Active" : "inactive"}
                                 </span>
                             </td>

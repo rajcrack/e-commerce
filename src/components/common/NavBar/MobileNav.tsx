@@ -16,7 +16,7 @@ const MobileNav = ({ closeNav, nav }: Props) => {
             {/* Nav Div */}
             <div className={`bg-white ${navStyle} transition-all duration-500 delay-200 flex items-center justify-center w-[40%] h-[100%]`}>
                 <ul className='space-y-10'>
-                    {NavLinks.map((link, index) => (<li key={index}><Link href={link.href}>{link.title}</Link></li>))}
+                    {NavLinks.map((link, index) => (<li key={index}><Link href={link.href} onClick={closeNav}>{link.title}</Link></li>))}
 
                 </ul>
             </div>
