@@ -24,7 +24,7 @@ const ResponsiveNav = () => {
     const closeNavHandler = () => setShowNav(false);
     return (
         <>
-            <div className='border-b shadow-md sticky top-0 z-0 bg-white'>
+            <div className='border-b shadow-md sticky top-0 bg-white z-[200]'>
                 <NavBar openNav={openNavHandler} />
                 <MobileNav nav={showNav} closeNav={closeNavHandler} />
 

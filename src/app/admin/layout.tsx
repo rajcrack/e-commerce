@@ -1,6 +1,6 @@
 "use client";
 import { AdminDeskTopLayout } from "@/components/admin/Sidebar/DeskTopLayout";
-import type { Metadata } from "next";
+
 
 
 // export const metadata: Metadata = {
@@ -16,6 +16,7 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
     return (
 
         <main className="flex lg:flex-row gap-2 bg-[#efefef]">

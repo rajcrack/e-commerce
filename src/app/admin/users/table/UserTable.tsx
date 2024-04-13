@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import { LoadingContext } from '@/lib/global/context/context';
+import React, { useContext, useEffect, useState } from 'react'
 interface Props {
     id?: string
     name?: string
@@ -11,6 +12,7 @@ interface Props {
 
 
 export default function UserTable({ type }: { type: string }) {
+    const { setter } = useContext(LoadingContext);
     const [userList, setUserList] = useState<any>([]);
     const [count, setCount] = useState<number>(0);
     const updateCount = () => {
@@ -49,10 +51,10 @@ export default function UserTable({ type }: { type: string }) {
                 <table className="w-full text-sm text-left rtl:text-right dark:text-gray-400 shadow-2xl">
                     <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border-b-2 border-black pt-4 pb-4 h-[55px]">
                         <tr>
-                            <th scope="col" className="px-6 py-3 dark:bg-gray-800 text-[16px] font-black">
+                            <th scope="col" className="px-6 py-3 dark:bg-gray-800 text-[16px] font-black" onClick={() => setter(true)}>
                                 Serial
                             </th>
-                            <th scope="col" className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-[16px] font-black">
+                            <th scope="col" className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-[16px] font-black " onClick={() => setter(false)}>
                                 Full Name
                             </th>
                             <th scope="col" className="px-6 py-3 text-[16px] font-black">

@@ -1,4 +1,6 @@
+import { LoadingContext } from '@/lib/global/context/context';
 import Link from 'next/link';
+import { useContext } from 'react';
 
 interface Props {
     heading: string
@@ -9,6 +11,9 @@ interface Props {
     url?: string
 }
 export default function AdminCard({ heading, count, bgColor, height, fgColor, url }: Props) {
+
+
+
     if (!bgColor) {
         bgColor = "bg-white";
     }
