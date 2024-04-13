@@ -8,6 +8,7 @@ interface Props {
     password?: string
     isActive?: boolean
     phone?: string
+    role?: string
 }
 
 
@@ -90,16 +91,14 @@ export default function UserTable({ type }: { type: string }) {
                                 {data.phone}
                             </td>
                             <td className="px-6 py-4">
-                                <span className={(data.isActive ? 'bg-green-600' : 'bg-red-600') + ' pt-[6px] pb-[6px] pl-3 pr-3 text-white rounded-full cursor-pointer'} onClick={() => updateActive(data.id, data.isActive)}>
-                                    {data.isActive ? "Active" : "inactive"}
+                                <span className={(data.isActive ? 'bg-green-600' : 'bg-red-600') + ' pt-[6px] pb-[6px] pl-3 pr-3 text-white rounded-full cursor-pointer'} onClick={() => data.role != 'admin' ? updateActive(data.id, data.isActive) : null}>
+                                    {data.role != 'admin' ? (data.isActive ? "Active" : "inactive") : 'Active'}
                                 </span>
                             </td>
                             <td className="px-6 py-4 dark:bg-gray-800 bg-gray-100 text-[14px]">
                                 {data.id}
                             </td>
-
                         </tr>))}
-
                     </tbody>
                 </table>
             </div>

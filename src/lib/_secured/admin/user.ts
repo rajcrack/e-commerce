@@ -8,7 +8,8 @@ export const FunctionUserList = async (q: boolean) => {
             email: true,
             phone: true,
             password: true,
-            isActive: true
+            isActive: true,
+            role: true
         },
         where: {
             isActive: q

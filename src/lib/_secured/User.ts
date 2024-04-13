@@ -24,6 +24,7 @@ export const UserLogin = async ({ data, password }: { data: string, password: st
                 name: true,
                 phone: true,
                 email: true,
+                isActive: true,
                 id: true,
                 role: true,
             },
