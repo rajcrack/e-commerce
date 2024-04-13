@@ -20,6 +20,7 @@ export default function UserTable({ type }: { type: string }) {
     }
     useEffect(() => {
         async function geUserList() {
+            setter(true);
             console.log(type);
             const response = await fetch(`/api/admin/user?type=${type}`, {
                 method: "GET",
@@ -28,6 +29,7 @@ export default function UserTable({ type }: { type: string }) {
                 }
             });
             const { usersList } = await response.json();
+            setter(false);
             setUserList(usersList);
         }
         geUserList();
@@ -35,6 +37,7 @@ export default function UserTable({ type }: { type: string }) {
 
 
     const updateActive = async (id?: string, nowActive?: boolean) => {
+        setter(true);
         const response = await fetch('/api/admin/user?update=isActive', {
             method: "PUT",
             body: JSON.stringify({
@@ -43,6 +46,7 @@ export default function UserTable({ type }: { type: string }) {
             })
         });
         const responseData = await response.json();
+        setter(false);
         updateCount();
     }
     return (
@@ -51,10 +55,10 @@ export default function UserTable({ type }: { type: string }) {
                 <table className="w-full text-sm text-left rtl:text-right dark:text-gray-400 shadow-2xl">
                     <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border-b-2 border-black pt-4 pb-4 h-[55px]">
                         <tr>
-                            <th scope="col" className="px-6 py-3 dark:bg-gray-800 text-[16px] font-black" onClick={() => setter(true)}>
+                            <th scope="col" className="px-6 py-3 dark:bg-gray-800 text-[16px] font-black">
                                 Serial
                             </th>
-                            <th scope="col" className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-[16px] font-black " onClick={() => setter(false)}>
+                            <th scope="col" className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-[16px] font-black">
                                 Full Name
                             </th>
                             <th scope="col" className="px-6 py-3 text-[16px] font-black">
